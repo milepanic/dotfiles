@@ -8,7 +8,8 @@ export PATH=$PATH:/$HOME/.config/composer/vendor/bin
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gnzh"
+# ZSH_THEME="gnzh"
+ZSH_THEME="materialshell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -98,6 +99,8 @@ alias migrate="php artisan migrate"
 alias fresh="php artisan migrate:fresh --seed"
 alias t="vendor/bin/phpunit"
 alias qwork="php artisan queue:work"
+alias cache-all="composer dumpautoload -o && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+alias clear-all="composer dumpautoload && php artisan config:clear && php artisan route:clear && php artisan view:clear"
 # GIT
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gnah="git reset --hard && git clean -df"
