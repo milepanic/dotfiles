@@ -102,7 +102,6 @@ alias upgrade="sudo apt update && sudo apt full-upgrade -y"
 alias install="sudo apt install"
 alias remove="sudo apt remove"
 alias autoremove="sudo apt autoremove -y"
-alias vpn="sudo openvpn --config $HOME/.vpnbook/vpnbook-us1-udp53.ovpn"
 alias ks="bash ~/.kde/Autostart/disable_panel_shadow.sh"
 # Laravel
 alias art="php artisan"
@@ -117,18 +116,29 @@ alias clear-all="composer dumpautoload && php artisan config:clear && php artisa
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gnah="git reset --hard && git clean -df"
 # Docker
+alias dk='docker'
+alias dkc='docker-compose'
+alias dkcu='docker-compose up -d'
+alias dkcd='docker-compose down'
+alias dkcb='docker-compose build'
+alias dkce='docker-compose exec'
 alias dart='docker-compose exec -u "$UID" web php /var/www/html/artisan'
+alias drart='docker-compose exec web php /var/www/html/artisan'
 dexe() {
-    docker exec -u $UID -it $1 sh
+    docker exec -u $UID -it $1 bash
 }
-ddbip() {
+drexe() {
+    docker exec -it $1 bash
+}
+dip() {
     docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
 }
+alias dockerize="sh ~/dockerize.sh"
 # Vagrant
 alias vgsubl="subl ~/Homestead/Homestead.yaml"
 alias vg="cd ~/Homestead && vagrant up && vagrant ssh"
 alias vgssh="cd ~/Homestead && vagrant ssh"
-alias vgr="cd ~/Homestead && vagrant reload --provision"
+alias vgr="cd ~/Homestead && vagrant reload --provision && vagrant ssh"
 alias hosts="sudo subl /etc/hosts"
 # PHPStorm
-alias blur="./blur.sh 'jetbrains-phpstorm' 'jetbrains-phpstorm' 2"
+alias blur="( cd $HOME ; ./blur.sh 'jetbrains-phpstorm' 'jetbrains-phpstorm' 1 )"
